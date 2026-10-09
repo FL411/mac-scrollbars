@@ -1,5 +1,15 @@
 # Mac Scrollbars
 
+[![Latest release](https://img.shields.io/github/v/release/FL411/mac-scrollbars)](https://github.com/FL411/mac-scrollbars/releases/latest)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Manifest V3](https://img.shields.io/badge/manifest-V3-3d8f5c)](manifest.json)
+![Browsers](https://img.shields.io/badge/works%20with-Chrome%20%7C%20Edge-4285f4)
+
+**Slim, rounded, macOS-style scrollbars for Chrome and Edge.** One tiny extension, zero tracking — your scrollbars, but quieter.
+
+> [!TIP]
+> **Install in 30 seconds:** download the [latest release zip](https://github.com/FL411/mac-scrollbars/releases/latest), unzip it, then load the folder as an unpacked extension. Full steps below.
+
 一个适用于 Edge 和 Chrome 的 Manifest V3 美化扩展，将普通网页的滚动条调整为接近 macOS 的细窄圆角样式。
 
 当前支持：
