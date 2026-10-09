@@ -1,0 +1,70 @@
+/* Chromium uses the WebKit scrollbar pseudos below. Keeping the standard
+   properties out of this rule avoids overriding the user-selected width. */
+html[data-mac-scrollbars="on"] {
+  --mac-scrollbar-width: 8px;
+  --mac-scrollbar-color: #7d8794;
+  --mac-scrollbar-opacity: 0.45;
+}
+
+/* Since Chrome 121, ::-webkit-scrollbar-* styles are ignored on any element
+   whose computed scrollbar-width / scrollbar-color is non-initial. Sites like
+   GitHub or YouTube declare those standard properties themselves, which used
+   to disable our styling there. Forcing them back to their initial value
+   re-enables the WebKit pseudo styles above on those elements. */
+html[data-mac-scrollbars="on"],
+html[data-mac-scrollbars="on"] * {
+  scrollbar-width: auto !important;
+  scrollbar-color: auto !important;
+}
+
+html[data-mac-scrollbars="on"]::-webkit-scrollbar,
+html[data-mac-scrollbars="on"] *::-webkit-scrollbar {
+  width: var(--mac-scrollbar-width) !important;
+  height: var(--mac-scrollbar-width) !important;
+}
+
+html[data-mac-scrollbars="on"]::-webkit-scrollbar-track,
+html[data-mac-scrollbars="on"] *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html[data-mac-scrollbars="on"]::-webkit-scrollbar-thumb,
+html[data-mac-scrollbars="on"] *::-webkit-scrollbar-thumb {
+  background: var(--mac-scrollbar-color);
+  opacity: var(--mac-scrollbar-opacity);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+  min-height: 28px;
+  transition: opacity 160ms ease, background-color 160ms ease;
+}
+
+html[data-mac-scrollbars="on"]::-webkit-scrollbar-thumb:hover,
+html[data-mac-scrollbars="on"] *::-webkit-scrollbar-thumb:hover {
+  opacity: 0.78;
+  background-color: var(--mac-scrollbar-color);
+}
+
+html[data-mac-scrollbars="on"][data-mac-scrollbar-mode="auto"]::-webkit-scrollbar-thumb,
+html[data-mac-scrollbars="on"][data-mac-scrollbar-mode="auto"] *::-webkit-scrollbar-thumb {
+  background-color: transparent !important;
+  opacity: 1;
+}
+
+html[data-mac-scrollbars="on"][data-mac-scrollbar-mode="auto"][data-mac-scrolling="true"]::-webkit-scrollbar-thumb,
+html[data-mac-scrollbars="on"][data-mac-scrollbar-mode="auto"][data-mac-scrolling="true"] *::-webkit-scrollbar-thumb {
+  background-color: var(--mac-scrollbar-color) !important;
+  opacity: var(--mac-scrollbar-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-mac-scrollbars="on"]::-webkit-scrollbar-thumb,
+  html[data-mac-scrollbars="on"] *::-webkit-scrollbar-thumb {
+    transition: none;
+  }
+}
+
+html[data-mac-scrollbars="on"]::-webkit-scrollbar-corner,
+html[data-mac-scrollbars="on"] *::-webkit-scrollbar-corner {
+  background: transparent;
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mac Scrollbars 修复验证页</title>
+<style>
+  /* 页面级标准属性：修复前会让整页滚动条逃过扩展接管 */
+  html { scrollbar-color: #d06060 #f0f0f0; }
+  body { margin: 0; padding: 28px; font: 14px/1.7 -apple-system, "Segoe UI", sans-serif; color: #2b3138; background: #fafbfc; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  .sub { color: #7a838d; font-size: 13px; margin: 0 0 24px; }
+  .case { max-width: 720px; margin: 0 0 22px; padding: 16px 18px; border: 1px solid #e1e6ea; border-radius: 10px; background: #fff; }
+  .case h2 { font-size: 15px; margin: 0 0 4px; }
+  .case p { margin: 0 0 12px; color: #7a838d; font-size: 12.5px; }
+  .case code { background: #f1f4f6; border-radius: 4px; padding: 1px 6px; font-size: 12px; }
+  .scroller { height: 130px; overflow: auto; border-radius: 8px; background: #f6f8f9; padding: 10px 14px; }
+  .filler { height: 420px; background: linear-gradient(#e8eef3, #c9d6df); border-radius: 6px; }
+  iframe { width: 100%; height: 150px; border: 1px solid #e1e6ea; border-radius: 8px; background: #fff; }
+  .tag { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 99px; font-size: 11px; vertical-align: 2px; }
+  .tag.fix { background: #e3f2e8; color: #2c7a4b; }
+  .tag.limited { background: #fdeeea; color: #b0563f; }
+  .howto { max-width: 720px; padding: 14px 18px; border-radius: 10px; background: #eef4fb; border: 1px solid #d5e3f3; font-size: 13px; }
+</style>
+</head>
+<body>
+  <h1>Mac Scrollbars 修复验证页</h1>
+  <p class="sub">在扩展管理页“重新加载”扩展并刷新本页面后，逐项核对下方四个区块。</p>
+
+  <div class="howto">
+    <strong>使用方法</strong>：本页是本地文件，需先在 <code>edge://extensions</code> / <code>chrome://extensions</code>
+    的扩展详情页开启<strong>“允许访问文件网址”</strong>，再重新加载扩展、刷新本页。
+    修复后所有可滚动区域都应出现细窄圆角的 mac 风格滚动条。
+  </div>
+
+  <div class="case" style="margin-top:22px">
+    <h2>① 网站使用标准属性 <span class="tag fix">本次修复</span></h2>
+    <p>此容器声明了 <code>scrollbar-width: thin; scrollbar-color: #d06060 #f0f0f0;</code>——修复前扩展样式会被 Chrome 121+ 禁用，红色滚动条原样保留；修复后应变为 mac 风格。</p>
+    <div class="scroller" style="scrollbar-width: thin; scrollbar-color: #d06060 #f0f0f0;">
+      向下滚动到最底部看看滚动条样式。<div class="filler"></div>到底了。
+    </div>
+  </div>
+
+  <div class="case">
+    <h2>② 整页标准属性 <span class="tag fix">本次修复</span></h2>
+    <p>页面 <code>&lt;html&gt;</code> 上声明了 <code>scrollbar-color: #d06060 #f0f0f0;</code>，修复前最右侧的整页滚动条是红色的；修复后应变为 mac 风格细条。</p>
+    <p>拖动浏览器窗口最右侧的滚动条即可验证。</p>
+  </div>
+
+  <div class="case">
+    <h2>③ iframe 内部滚动 <span class="tag fix">本次修复</span></h2>
+    <p>修复前 content script 只注入顶层页面，iframe 内滚动条完全不受影响；开启 <code>all_frames</code> 后这里也应出现 mac 风格。</p>
+    <iframe srcdoc="<style>body{margin:0;padding:12px;font:14px sans-serif;color:#333}</style><p>iframe 内滚动区域，滚到底部验证。</p><div style='height:400px;background:linear-gradient(#eef,#c8d4ff);border-radius:6px'></div><p>到底了 —— 能看到这行说明 iframe 已滚动。</p>"></iframe>
+  </div>
+
+  <div class="case">
+    <h2>④ Shadow DOM 内部滚动 <span class="tag limited">已知限制</span></h2>
+    <p>Shadow DOM 内部受浏览器样式隔离保护，纯 CSS 方案无法覆盖，此处预期仍是浏览器原生样式——属于限制而非故障。</p>
+    <div id="shadow-host"></div>
+  </div>
+
+  <script>
+    const host = document.getElementById("shadow-host");
+    const root = host.attachShadow({ mode: "open" });
+    root.innerHTML = `
+      <style>
+        .scroller { height: 130px; overflow: auto; border-radius: 8px; background: #f6f8f9; padding: 10px 14px; scrollbar-width: thin; }
+        .filler { height: 420px; background: linear-gradient(#e8eef3, #c9d6df); border-radius: 6px; }
+        p { margin: 0 0 10px; font: 13px sans-serif; color: #555; }
+      </style>
+      <div class="scroller"><p>Shadow DOM 内的滚动容器。</p><div class="filler"></div><p>到底了。</p></div>`;
+  </script>
+</body>
+</html>

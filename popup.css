@@ -1,0 +1,69 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f7f9;
+  color: #20262d;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 336px;
+  margin: 0;
+  background: #f5f7f9;
+}
+
+.panel { padding: 22px 20px 16px; }
+
+.header { display: flex; align-items: center; gap: 11px; margin-bottom: 22px; }
+.brand-mark { width: 34px; height: 34px; border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 3px; background: #20262d; }
+.brand-mark span { width: 3px; border-radius: 99px; background: #d7dde3; }
+.brand-mark span:nth-child(1) { height: 11px; opacity: .62; }
+.brand-mark span:nth-child(2) { height: 17px; opacity: .82; }
+.brand-mark span:nth-child(3) { height: 8px; opacity: .48; }
+h1 { margin: 0; font-size: 16px; letter-spacing: 0; font-weight: 700; }
+.header p { margin: 3px 0 0; color: #7a838d; font-size: 11px; }
+
+.control-row { display: flex; align-items: center; justify-content: space-between; }
+.control-row[hidden] { display: none; }
+.control-row--toggle { padding: 13px 0 15px; border-top: 1px solid #e1e6ea; border-bottom: 1px solid #e1e6ea; }
+.control-row--site { padding: 12px 0 13px; border-bottom: 1px solid #e1e6ea; }
+.control-row strong { display: block; font-size: 13px; }
+.control-row span:not(.switch-track) { display: block; margin-top: 3px; color: #8a939d; font-size: 11px; }
+#site-name { max-width: 220px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.switch { position: relative; display: inline-flex; width: 38px; height: 22px; flex: 0 0 auto; }
+.switch input { position: absolute; opacity: 0; }
+.switch-track { width: 100%; height: 100%; border-radius: 99px; background: #cbd2d8; transition: background .18s ease; }
+.switch-track::after { content: ""; position: absolute; width: 18px; height: 18px; top: 2px; left: 2px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px #25313d2b; transition: transform .18s ease; }
+.switch input:checked + .switch-track { background: #2d363f; }
+.switch input:checked + .switch-track::after { transform: translateX(16px); }
+.switch input:focus-visible + .switch-track { outline: 2px solid #96a9b9; outline-offset: 2px; }
+
+.settings { padding: 17px 0 11px; }
+.field { display: block; margin-bottom: 14px; }
+.field:last-child { margin-bottom: 0; }
+.field-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; color: #4d5863; font-size: 12px; }
+output { color: #8a939d; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; height: 4px; display: block; accent-color: #3b4752; cursor: pointer; }
+select { width: 100%; height: 31px; padding: 0 9px; border: 1px solid #dce2e6; border-radius: 6px; background: #fff; color: #4d5863; font: inherit; font-size: 12px; cursor: pointer; }
+select:focus-visible { outline: 2px solid #96a9b9; outline-offset: 1px; }
+.color-output { display: flex; align-items: center; }
+input[type="color"] { width: 25px; height: 21px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.preview { display: flex; align-items: center; justify-content: space-between; min-height: 66px; padding: 12px 13px; border: 1px solid #e1e6ea; border-radius: 8px; background: #fff; }
+.preview[data-scheme="dark"] { border-color: #3b444d; background: #252c33; color: #edf2f5; }
+.preview[data-scheme="dark"] .preview-copy span:last-child { color: #aeb8c0; }
+.preview[data-scheme="dark"] .preview-track { background: #3b444d; }
+.preview-copy { display: grid; gap: 3px; }
+.preview-copy strong { font-size: 12px; }
+.preview-copy span:last-child { color: #939ca5; font-size: 10px; }
+.eyebrow { color: #9ca5ad; font-size: 9px; letter-spacing: 1px; }
+.preview-track { width: 7px; height: 42px; margin-right: 3px; border-radius: 99px; background: #f0f2f4; }
+.preview-thumb { width: 7px; height: 20px; border-radius: 99px; background: #7d8794; opacity: .45; }
+
+.reset-button { width: 100%; height: 30px; margin-top: 12px; border: 1px solid #dce2e6; border-radius: 6px; background: transparent; color: #69747e; font: inherit; font-size: 11px; cursor: pointer; }
+.reset-button:hover { border-color: #aeb9c2; color: #303b45; background: #fff; }
+.reset-button:focus-visible { outline: 2px solid #96a9b9; outline-offset: 1px; }
+
+footer { display: flex; align-items: center; gap: 6px; padding-top: 14px; color: #9aa3ab; font-size: 10px; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #74a188; }

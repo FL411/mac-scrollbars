@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mac Scrollbars</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="panel">
+      <header class="header">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div>
+          <h1>Mac Scrollbars</h1>
+          <p>让网页滚动条更轻、更安静</p>
+        </div>
+      </header>
+
+      <section class="control-row control-row--toggle">
+        <div>
+          <strong>启用美化</strong>
+          <span>仅作用于普通网页</span>
+        </div>
+        <label class="switch">
+          <input id="enabled" type="checkbox" aria-label="启用美化">
+          <span class="switch-track"></span>
+        </label>
+      </section>
+
+      <section id="site-row" class="control-row control-row--site" hidden>
+        <div>
+          <strong>当前网站</strong>
+          <span id="site-name">当前页面</span>
+        </div>
+        <label class="switch">
+          <input id="site-enabled" type="checkbox" aria-label="当前网站启用">
+          <span class="switch-track"></span>
+        </label>
+      </section>
+
+      <section class="settings" aria-label="滚动条设置">
+        <label class="field">
+          <span class="field-label"><span>显示模式</span></span>
+          <select id="mode" aria-label="显示模式">
+            <option value="always">始终显示</option>
+            <option value="auto">滚动时显示</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>颜色模式</span></span>
+          <select id="color-mode" aria-label="颜色模式">
+            <option value="auto">跟随浏览器</option>
+            <option value="light">强制浅色</option>
+            <option value="dark">强制深色</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>颜色预设</span></span>
+          <select id="preset" aria-label="颜色预设">
+            <option value="custom">自定义</option>
+            <option value="light">浅色预设</option>
+            <option value="dark">深色预设</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>滚动条宽度</span><output id="width-value">8 px</output></span>
+          <input id="width" type="range" min="4" max="14" step="1">
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>默认透明度</span><output id="opacity-value">45%</output></span>
+          <input id="opacity" type="range" min="0.2" max="0.8" step="0.01">
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>浅色滚动块</span><output class="color-output"><input id="light-color" type="color" aria-label="浅色滚动块颜色"></output></span>
+        </label>
+
+        <label class="field">
+          <span class="field-label"><span>深色滚动块</span><output class="color-output"><input id="dark-color" type="color" aria-label="深色滚动块颜色"></output></span>
+        </label>
+
+      </section>
+
+      <div class="preview" aria-label="滚动条预览">
+        <div class="preview-copy"><span class="eyebrow">PREVIEW</span><strong>轻盈的滚动反馈</strong><span>悬停时会稍微加深</span></div>
+        <div class="preview-track"><div class="preview-thumb"></div></div>
+      </div>
+
+      <button id="reset" class="reset-button" type="button">恢复默认</button>
+
+      <footer><span class="status-dot"></span><span id="status">设置会自动保存</span></footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
