@@ -12,6 +12,26 @@
 - 恢复默认设置，设置会同步保存
 - 兼容使用标准 `scrollbar-width` / `scrollbar-color` 属性的网站（Chrome/Edge 121+），样式同样作用于页面内嵌 iframe
 
+## 效果预览
+
+**浅色主题**
+
+| 原生滚动条 | Mac Scrollbars |
+| :---: | :---: |
+| ![原生滚动条（浅色）](docs/before-light.png) | ![Mac Scrollbars（浅色）](docs/after-light.png) |
+
+**深色主题**
+
+| 原生滚动条 | Mac Scrollbars |
+| :---: | :---: |
+| ![原生滚动条（深色）](docs/before-dark.png) | ![Mac Scrollbars（深色）](docs/after-dark.png) |
+
+**设置面板**
+
+<img src="docs/popup.png" width="320" alt="设置面板">
+
+对比图来自 [`docs/demo.html`](docs/demo.html)（静态占位页，可在浏览器中自行打开复现）。
+
 ## 加载方式
 
 1. 打开 `edge://extensions` 或 `chrome://extensions`。

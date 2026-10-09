@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0;
+    font: 16px/1.8 -apple-system, "Segoe UI", sans-serif;
+    background: #fafbfc; color: #24292f;
+  }
+  body.dark { background: #0d1117; color: #e6edf3; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 72px 48px; }
+  h1 { font-size: 44px; margin: 0 0 8px; letter-spacing: -0.5px; }
+  .sub { font-size: 18px; opacity: .65; margin: 0 0 48px; }
+  h2 { font-size: 26px; margin: 48px 0 12px; }
+  p { margin: 0 0 18px; opacity: .88; }
+  .hero {
+    padding: 28px 32px; border-radius: 14px; margin-bottom: 40px;
+    background: linear-gradient(135deg, #e8eef3, #d3dee7);
+  }
+  body.dark .hero { background: linear-gradient(135deg, #16222e, #1f2d3a); }
+  .tag { display: inline-block; font-size: 12px; letter-spacing: 2px; opacity: .55; margin-bottom: 6px; }
+  .foot { margin-top: 64px; padding-top: 24px; border-top: 1px solid rgba(128,128,128,.25); font-size: 13px; opacity: .55; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tag">MAC SCROLLBARS — DEMO PAGE</div>
+    <h1>Scrollbars, but quieter.</h1>
+    <p class="sub">A slim, rounded scrollbar that stays out of your way.</p>
+    <div class="hero"><strong>This page is a screenshot fixture.</strong><br>Look at the scrollbar on the right edge of the window — that is what this extension changes.</div>
+
+    <h2>Why restyle scrollbars?</h2>
+    <p>Default scrollbars are loud. On Windows they take around seventeen pixels, draw a solid grey block on every page, and fight with carefully designed layouts. A slim rounded thumb reads as a hint instead of a headline.</p>
+    <p>This page exists only to demonstrate the difference between the native scrollbar and the style this extension applies. The text you are reading is filler; the scrollbar is the content.</p>
+
+    <h2>What changes</h2>
+    <p>The thumb becomes an eight-pixel rounded pill, floating over a transparent track. It darkens slightly on hover, and in "show while scrolling" mode it only appears while you actually scroll, then fades away.</p>
+    <p>Colors follow the browser theme, or can be forced light or dark with two custom colors. Width and opacity are adjustable, and any site can be excluded with one click.</p>
+
+    <h2>How it works</h2>
+    <p>The extension injects a small stylesheet into every frame of every ordinary web page. It styles the WebKit scrollbar pseudo elements and neutralizes the standard scrollbar properties that Chromium 121 and later use to disable them, so the custom look keeps working on sites that set those properties themselves.</p>
+    <p>No page content is read, nothing is transmitted, and preferences live in your browser account storage.</p>
+
+    <h2>Try it</h2>
+    <p>Load the extension, open any page, and scroll. The difference is easiest to see on long reading sessions, documentation sites, and code-heavy pages where a fat grey bar breaks the layout's rhythm.</p>
+    <p>Everything on this page is static placeholder content written for screenshots. Nothing here is a real article. Scroll on.</p>
+
+    <div class="foot">Mac Scrollbars · demo fixture · filler text only</div>
+  </div>
+</body>
+</html>
