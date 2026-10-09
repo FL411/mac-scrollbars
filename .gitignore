@@ -1,0 +1,7 @@
+# Build artifacts (attached to GitHub Releases instead)
+release/*.zip
+release/verify/
+
+# OS / editor noise
+Thumbs.db
+Desktop.ini
